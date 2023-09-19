@@ -231,6 +231,7 @@ FSupplierIDNum:integer:0
 FItemnum:integer:0
 ISupplieridItemNum:PU:ASupplierIDNum:AItemnum
 IItemNumSupplierID:U:AItemnum:ASupplierIDNum
+
 TEmployee
 FLastName:character:0
 FFirstName:character:0
@@ -251,6 +252,7 @@ FBirthdate:date:0
 IEmpNo:PU:AEmpNum
 IDeptCode::ADeptCode
 IName:U:ALastName:AFirstName
+
 TState
 FState:character:0
 FStateName:character:0

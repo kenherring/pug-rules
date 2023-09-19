@@ -1,0 +1,9 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "disabled",
+    "maven.executable.path": "C:/Users/kherring/maven/apache-maven-4.0.0-alpha-7/bin/mvn",
+    "terminal.integrated.env.windows": {
+      "MVN_HOME": "~/maven/apache-maven-4.0.0-alpha-7",
+      "PATH": "${env.PATH}:~/maven/apache-maven-4.0.0-alpha-7/bin"
+    }
+}
