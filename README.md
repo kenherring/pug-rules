@@ -1,8 +1,31 @@
 # Ken's Sonar Rules
 
-TBD
+This repo was created for my presentation(s) at the PUG Challenge EU 2023 conference.  It may not happen quickly, but I intend to maintain this as a small set of examples others can use to help improve their code.  I hope you find it useful.
 
-## How to build
+## Run Unit Tests
 
-* Clone the project locally, then execute `mvn package`.
-* Deploy to your SonarQube instance by pushing the JAR file in `target` directory to `$SONAR_HOME/extensions/downloads`.
+```bash
+mvn test
+```
+
+## Sonar Scan This Project
+
+This is meta.  The following command will run a Sonar scan on this project.  It will use the SonarQube instance running in Docker (as defined in `docker-compose.yml`).  The intention is to tell us about any problems with the java code.
+
+```bash
+mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
+```
+
+## Deploy to SonarQube Docker Instance
+
+This will build/package the project, download dependencies, and deploy it to the SonarQube instance running in Docker (as defined in `docker-compose.yml`).  It will also restart the image so that the new jar files are loaded.
+
+This should be run before scanning your OE code to ensure the rules are up to date.
+
+```bash
+mvn clean install
+```
+
+## Screenshot
+
+![DoNotLogPifi](.docs/image.png)

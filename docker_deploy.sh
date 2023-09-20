@@ -1,13 +1,21 @@
 #!/bin/bash
-set -eou -pipefail
+set -eou pipefail
 
+echo 100
 # docker compose up -d
-docker cp target/project-local-repo/ken.herring.pug.rules/pug-rules-plugin/2023.09.20/pug-rules-plugin-2023.09.20.jar \
-       sonarqube:/opt/sonarqube/extensions/downloads/
-docker cp deps/sonar-openedge-plugin-2.22.3.jar \
-       sonarqube:/opt/sonarqube/extensions/downloads/
+echo 101.1
+if [ "$(docker compose ps -a -q)" = "" ]; then
+  docker compose up -d
+fi
+echo 101.2
+docker cp target/pug-rules-plugin-2023.09.20.jar sonarqube:/opt/sonarqube/extensions/downloads/pug-rules-plugin-2023.09.20.jar
+echo 102
+docker cp deps/sonar-openedge-plugin-2.22.3.jar sonarqube:/opt/sonarqube/extensions/downloads/sonar-openedge-plugin-2.22.3.jar
+echo 103
 docker compose down
-docker compose up -d
+echo 104
+docker compose up -d --force-recreate
+echo 105
 
 echo "TODO: wait for successful start"
 
