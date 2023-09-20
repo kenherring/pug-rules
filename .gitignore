@@ -1,6 +1,9 @@
 /target/
 /test-output/
+deps/
+
 .classpath
 .project
 .settings
-
+.scannerwork
+*.jar
