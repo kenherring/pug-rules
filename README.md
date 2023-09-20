@@ -1,6 +1,6 @@
-# ACME Rules
+# Ken's Sonar Rules
 
-This project is a template for [custom OpenEdge rules](https://github.com/Riverside-Software/sonar-openedge) in [SonarQube](https://www.sonarqube.org).
+TBD
 
 ## How to build
 
