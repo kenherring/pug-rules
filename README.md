@@ -1,6 +1,8 @@
 # Ken's Sonar Rules
 
-This repo was created for my presentation(s) at the PUG Challenge EU 2023 conference.  It may not happen quickly, but I intend to maintain this as a small set of examples others can use to help improve their code.  I hope you find it useful.
+This repo was created for my presentation(s) at the [PUG Challenge EU](https://pugchallenge.eu/) 2023 conference.  It may not happen quickly, but I intend to maintain this as a small set of examples others can use to help improve their code.  I hope you find it useful.
+
+See the [slide deck (.pptx)](2023-09-20_Custom Sonar Rules and Measures.pptx) for more information.
 
 ## Run Unit Tests
 
@@ -10,7 +12,7 @@ mvn test
 
 ## Sonar Scan This Project
 
-This is meta.  The following command will run a Sonar scan on this project.  It will use the SonarQube instance running in Docker (as defined in `docker-compose.yml`).  The intention is to tell us about any problems with the java code.
+The following command will run a Sonar scan on this project.  It will use the SonarQube instance running in Docker (as defined in `docker-compose.yml`).  The intention is to tell us about any problems with the java code.
 
 ```bash
 mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
