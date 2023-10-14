@@ -12,7 +12,7 @@ import org.sonar.plugins.openedge.api.Constants;
 import org.sonar.plugins.openedge.api.checks.OpenEdgeDumpFileCheck;
 import org.sonar.plugins.openedge.api.checks.OpenEdgeProparseCheck;
 
-import com.pug.rules.DoNotLogPifi;
+import com.pug.rules.DoNotLogSensitiveInfo;
 
 public class PugRulesDefinition implements RulesDefinition, CheckRegistration {
   private static final Logger LOGGER = LoggerFactory.getLogger(PugRulesDefinition.class);
@@ -64,7 +64,7 @@ public class PugRulesDefinition implements RulesDefinition, CheckRegistration {
    */
   @SuppressWarnings("unchecked")
   public static Class<? extends OpenEdgeProparseCheck>[] ppCheckClasses() {
-    return new Class[] {DoNotLogPifi.class};
+    return new Class[] {DoNotLogSensitiveInfo.class};
   }
 
   @SuppressWarnings("unchecked")

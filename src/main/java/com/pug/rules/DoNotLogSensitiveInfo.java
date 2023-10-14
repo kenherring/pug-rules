@@ -10,11 +10,10 @@ import org.prorefactor.core.JPNode;
 import org.prorefactor.core.nodetypes.FieldRefNode;
 import org.prorefactor.treeparser.ParseUnit;
 import org.prorefactor.treeparser.symbols.FieldContainer;
-import org.prorefactor.treeparser.symbols.TableBuffer;
 
-@Rule(priority = Priority.INFO, name = "Do not write PIFI to log files", tags = {"PugChallenge"})
+@Rule(priority = Priority.INFO, name = "Do not write sensitive info to log files", tags = {"PugChallenge"})
 @SqaleConstantRemediation(value = "5min")
-public class DoNotLogPifi extends OpenEdgeProparseCheck {
+public class DoNotLogSensitiveInfo extends OpenEdgeProparseCheck {
 
   @Override
   public void execute(InputFile file, ParseUnit unit) {
@@ -27,12 +26,6 @@ public class DoNotLogPifi extends OpenEdgeProparseCheck {
 
         FieldContainer fCont = fRefNode.getFieldContainer();
         System.out.println(fCont);
-
-        fCont.
-
-
-        //TODO: what type of FIELD_REF is this?
-
     }
   }
 

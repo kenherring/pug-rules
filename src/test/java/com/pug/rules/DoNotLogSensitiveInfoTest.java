@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class DoNotLogPifiTest extends AbstractTest {
+public class DoNotLogSensitiveInfoTest extends AbstractTest {
   private RuleKey ruleKey;
 
   @BeforeTest
@@ -19,7 +19,7 @@ public class DoNotLogPifiTest extends AbstractTest {
   @Test
   public void test1() {
     InputFile inputFile = getInputFile("DoNotLogPifi.p");
-    DoNotLogPifi rule = new DoNotLogPifi();
+    DoNotLogSensitiveInfo rule = new DoNotLogSensitiveInfo();
     rule.setContext(ruleKey, context, null);
     rule.initialize();
     rule.sensorExecute(inputFile, getParseUnit(inputFile));
