@@ -33,7 +33,7 @@ public abstract class AbstractTest {
 
   private RefactorSession session;
   private Schema schema;
-  
+
   @BeforeMethod
   public void initContext() throws IOException {
     ruleKey = RuleKey.parse(Constants.RSSW_REPOSITORY_KEY + ":" + this.getClass().getName());
