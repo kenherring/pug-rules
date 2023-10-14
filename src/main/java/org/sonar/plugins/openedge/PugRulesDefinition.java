@@ -17,8 +17,8 @@ import com.pug.rules.DoNotLogSensitiveInfo;
 public class PugRulesDefinition implements RulesDefinition, CheckRegistration {
   private static final Logger LOGGER = LoggerFactory.getLogger(PugRulesDefinition.class);
 
-  public static final String REPOSITORY_KEY = "pugi-rules";
-  public static final String REPOSITORY_NAME = "PUG Rules";
+  public static final String REPOSITORY_KEY = "pug-rules";
+  public static final String REPOSITORY_NAME = "OpenEdge rules (PUG)";
 
   private final SonarRuntime runtime;
 

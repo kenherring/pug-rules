@@ -6,9 +6,12 @@ See the [slide deck (.pptx)](2023-09-20_Custom Sonar Rules and Measures.pptx) fo
 
 ## Run Unit Tests
 
-```bash
-mvn test
-```
+* VSCode - use the **Tests: Run All Tests** command
+* Termianl - `mvn test`
+
+## Docker
+
+* Start sonarqube in a container - `docker-compose up -d`
 
 ## Sonar Scan This Project
 
@@ -28,6 +31,12 @@ This should be run before scanning your OE code to ensure the rules are up to da
 mvn clean install
 ```
 
+## VSCode tasks
+
+This project has a few rudimentary tasks defined to help with development.  Use the **Tasks: Run Task** command to access them.
+
+![Alt text](docs/tasks.png)
+
 ## Screenshot
 
-![DoNotLogPifi](.docs/image.png)
+![DoNotLogSensitiveInfo.png](.docs/image.png)
