@@ -5,29 +5,32 @@ import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.openedge.api.checks.OpenEdgeProparseCheck;
 import org.sonar.plugins.openedge.api.model.SqaleConstantRemediation;
+
 import java.util.ArrayList;
+
 import org.prorefactor.core.ABLNodeType;
 import org.prorefactor.core.JPNode;
 import org.prorefactor.core.nodetypes.FieldRefNode;
 import org.prorefactor.treeparser.ParseUnit;
 import org.prorefactor.treeparser.symbols.FieldBuffer;
+import org.prorefactor.treeparser.symbols.FieldContainer;
 
-@Rule(priority = Priority.INFO, name = "Do not write PIFI to log files", tags = {"pug-challenge"})
+@Rule(priority = Priority.INFO, name = "Do not write sensitive info to log files", tags = {"PugChallenge"})
 @SqaleConstantRemediation(value = "5min")
-public class DoNotLogPifi extends OpenEdgeProparseCheck {
+public class DoNotLogSensitiveInfo extends OpenEdgeProparseCheck {
 
-  ArrayList<String> PifiMap = new ArrayList<String>();
+  ArrayList<String> SensitiveMap = new ArrayList<String>();
 
-  private void createPifiList () {
-    PifiMap.add("sp2k.Employee.EmpNum");
-    PifiMap.add("sp2k.Employee.Name");
-    PifiMap.add("sp2k.Invoice.InvoiceNum");
-    PifiMap.add("sp2k.Invoice.Address");
+  private void createSensitiveList () {
+    SensitiveMap.add("sp2k.Employee.EmpNum");
+    SensitiveMap.add("sp2k.Employee.Name");
+    SensitiveMap.add("sp2k.Invoice.InvoiceNum");
+    SensitiveMap.add("sp2k.Invoice.Address");
   }
 
   @Override
   public void execute(InputFile file, ParseUnit unit) {
-    createPifiList();
+    createSensitiveList();
 
     for (JPNode node : unit.getTopNode().query(ABLNodeType.FIELD_REF)) {
         JPNode errNode = node;
@@ -42,10 +45,10 @@ public class DoNotLogPifi extends OpenEdgeProparseCheck {
         if (fRefNode.getSymbol() instanceof FieldBuffer){
           FieldBuffer fBuf = (FieldBuffer) fRefNode.getSymbol();
 
-          //Is the field in our PIFI list?
-          //TODO: check if the field is in the PIFI list via field desc in the schema
-          if (PifiMap.contains(fBuf.toString())) {
-            reportIssue(file, errNode, "Do not write PIFI to log files.  Field= " + fBuf);
+          //Is the field in our Sensitive Info list?
+          //TODO: check if the field is in the SensitiveMap list via field desc in the schema
+          if (SensitiveMap.contains(fBuf.toString())) {
+            reportIssue(file, errNode, "Do not write sensitive info to log files.  Field= " + fBuf);
           }
         }
     }

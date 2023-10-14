@@ -1,0 +1,36 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "open local sonarqube in browser",
+			"icon": {
+				"id": "browser",
+				"color": "terminal.ansiBlue",
+			},
+			"type": "shell",
+			"command": "start",
+			"args": [
+				"http://localhost:9000"
+			],
+			"presentation": {
+				"reveal": "never",
+				"focus": false,
+				"panel": "shared",
+				"close": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "scan this repo in local sonarqube",
+			"icon": {
+				"id": "search",
+				"color": "terminal.ansiBlue"
+			},
+			"type": "shell",
+			"command": "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin2",
+			"problemMatcher": []
+		}
+	]
+}

@@ -10,28 +10,26 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.pug.rules.DoNotLogPifi;
-
-public class DoNotLogPifiTest extends AbstractTest {
+public class DoNotLogSensitiveInfoTest extends AbstractTest {
   private RuleKey ruleKey;
 
   @BeforeTest
   public void init() {
-    ruleKey = RuleKey.parse("acme-main:NoOpRule");
+    ruleKey = RuleKey.parse("pug-rules:DoNotLogSensitiveInfo");
   }
 
   @Test
   public void test1() {
-    InputFile inputFile = getInputFile("DoNotLogPifi.p");
-    DoNotLogPifi rule = new DoNotLogPifi();
+    InputFile inputFile = getInputFile("DoNotLogSensitiveInfo.p");
+    DoNotLogSensitiveInfo rule = new DoNotLogSensitiveInfo();
     rule.setContext(ruleKey, context, null);
     rule.initialize();
     rule.sensorExecute(inputFile, getParseUnit(inputFile));
-
+    
     List<Integer> lines = context.allIssues().stream().map(
         issue -> issue.primaryLocation().textRange().start().line()).sorted().collect(Collectors.toList());
-    System.out.println(lines);
-    // Assert.assertEquals(lines, Arrays.asList(3));
+    // This line has to be updated to match the rule's logic
+    Assert.assertEquals(lines, Arrays.asList(3));
   }
 
 }
